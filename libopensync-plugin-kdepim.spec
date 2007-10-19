@@ -1,5 +1,5 @@
 %define name	libopensync-plugin-kdepim
-%define version	0.22
+%define version	0.33
 %define release %mkrel 1
 
 Name: 	 	%{name}
@@ -7,10 +7,10 @@ Version: 	%{version}
 Release: 	%{release}
 Summary: 	KDE plugin for opensync synchronization tool
 URL:		http://www.opensync.org
-Source:		http://www.opensync.org/attachment/wiki/download/%{name}-%{version}.tar.bz2
+Source:		http://www.opensync.org/download/releases/%{version}/%{name}-%{version}.tar.bz2
 License:	GPL
 Group:		Office
-BuildRequires:	opensync-devel
+BuildRequires:	opensync-devel >= %version
 BuildRequires:	kdepim-devel
 BuildRequires:  qt3-devel
 Obsoletes:	multisync-kdepim
