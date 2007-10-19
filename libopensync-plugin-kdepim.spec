@@ -26,9 +26,8 @@ KDE.
 
 %build
 %configure2_5x \
-    --with-qt-dir=%_prefix/lib/qt3 \
-    --with-qt-libraries=%_prefix/lib/qt3/%_lib \
-    --enable-libsuffix=`echo %_lib | sed '/lib//'`
+    --with-qt-dir=%{qt3dir} \
+    --with-qt-libraries=%{qt3lib}
 %make
 										
 %install
@@ -42,8 +41,6 @@ rm -rf %{buildroot}
 
 %files -f %{name}.lang
 %defattr(-,root,root)
-%doc AUTHORS ChangeLog NEWS README
+%doc AUTHORS README
 %{_libdir}/opensync/plugins/*
 %{_datadir}/opensync/defaults/*
-
-
