@@ -26,8 +26,7 @@ KDE.
 %setup -q -n %{name}
 
 %build
-aclocal
-automake --add-missing --copy --foreign || autoconf
+autoreconf -sfi
 %configure2_5x \
     --with-qt-dir=%{qt3dir} \
     --with-qt-libraries=%{qt3lib}
