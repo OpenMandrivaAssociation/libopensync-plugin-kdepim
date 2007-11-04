@@ -1,14 +1,13 @@
 %define name	libopensync-plugin-kdepim
-%define version	0.33
-%define svnrel	2596
-%define release %mkrel 1.%{svnrel}
+%define version	0.34
+%define release %mkrel 1
 
 Name: 	 	%{name}
 Version: 	%{version}
 Release: 	%{release}
 Summary: 	KDE plugin for opensync synchronization tool
 URL:		http://www.opensync.org
-Source:		http://www.opensync.org/download/releases/%{version}/%{name}-r%{svnrel}.tar.bz2
+Source:		http://www.opensync.org/download/releases/%{version}/%{name}-%{version}.tar.bz2
 License:	GPL
 Group:		Office
 BuildRequires:	opensync-devel >= %version
@@ -23,18 +22,17 @@ This plugin allows applications using OpenSync to synchronise to and from
 KDE.
 
 %prep
-%setup -q -n %{name}
+%setup -q
 
 %build
-autoreconf -sfi
-%configure2_5x \
-    --with-qt-dir=%{qt3dir} \
-    --with-qt-libraries=%{qt3lib}
+%cmake
 %make
 										
 %install
 rm -rf %{buildroot}
+cd build
 %makeinstall_std
+cd -
 
 %find_lang %name
 
