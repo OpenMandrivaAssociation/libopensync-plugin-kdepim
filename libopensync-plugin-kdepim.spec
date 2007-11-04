@@ -13,6 +13,7 @@ Group:		Office
 BuildRequires:	opensync-devel >= %version
 BuildRequires:	kdepim-devel
 BuildRequires:  qt3-devel
+BuildRequires:	cmake
 Obsoletes:	multisync-kdepim
 Provides:	multisync-kdepim
 BuildRoot:	%{_tmppath}/%{name}-%{version}
