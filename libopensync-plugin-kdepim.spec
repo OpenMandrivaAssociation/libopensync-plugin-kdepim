@@ -16,6 +16,7 @@ BuildRequires:  qt3-devel
 BuildRequires:	cmake
 Obsoletes:	multisync-kdepim
 Provides:	multisync-kdepim
+BuildRoot:	%{_tmppath}/%{name}-%{version}
 
 %description
 This plugin allows applications using OpenSync to synchronise to and from
