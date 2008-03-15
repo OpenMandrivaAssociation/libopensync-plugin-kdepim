@@ -1,19 +1,16 @@
-%define name	libopensync-plugin-kdepim
-%define version	0.36
-%define release %mkrel 1
-
-Name: 	 	%{name}
-Version: 	%{version}
-Release: 	%{release}
-Summary: 	KDE plugin for opensync synchronization tool
+Name: 	 	libopensync-plugin-kdepim
+Version: 	0.22
+Epoch:		1
+Release: 	%{mkrel 2}
+Summary: 	KDE plugin for OpenSync synchronization tool
 URL:		http://www.opensync.org
 Source:		http://www.opensync.org/download/releases/%{version}/%{name}-%{version}.tar.bz2
-License:	GPL
+License:	GPLv2
 Group:		Office
-BuildRequires:	opensync-devel >= %version
-BuildRequires:	kdepim-devel
+BuildRequires:	libopensync-devel < 0.30
+BuildRequires:	kdepim-devel >= 1:3.5.9-7
 BuildRequires:  qt3-devel
-BuildRequires:	cmake
+Requires:	libopensync >= %{epoch}:%{version}
 Obsoletes:	multisync-kdepim
 Provides:	multisync-kdepim
 BuildRoot:	%{_tmppath}/%{name}-%{version}
@@ -26,22 +23,23 @@ KDE.
 %setup -q
 
 %build
-%cmake
+%configure2_5x \
+    --with-qt-dir=%{qt3dir} \
+    --with-qt-libraries=%{qt3lib} \
+    --enable-libsuffix=`echo %_lib | sed '/lib//'`
 %make
 										
 %install
 rm -rf %{buildroot}
-cd build
 %makeinstall_std
-cd -
 
-%find_lang %name
+%find_lang %{name}
 
 %clean
 rm -rf %{buildroot}
 
 %files -f %{name}.lang
 %defattr(-,root,root)
-%doc AUTHORS README
-%{_libdir}/opensync-1.0/plugins/*
-%{_datadir}/opensync-1.0/defaults/*
+%doc AUTHORS ChangeLog NEWS README
+%{_libdir}/opensync/plugins/*
+%{_datadir}/opensync/defaults/*
