@@ -33,12 +33,14 @@ KDE.
 %if %{enable_kde4}
 %patch0 -p1 -b .kdepim4
 %endif
+autoreconf -i
 %build
 %if %{enable_kde4}
 %configure2_5x \
     --with-qt-dir=%{qt4dir} \
     --with-qt-libraries=%{qt4lib} \
-    --enable-libsuffix=`echo %_lib | sed '/lib//'`
+    --enable-libsuffix=`echo %_lib | sed '/lib//'` \
+    --disable-rpath
 %else
 %configure2_5x \
     --with-qt-dir=%{qt3dir} \
