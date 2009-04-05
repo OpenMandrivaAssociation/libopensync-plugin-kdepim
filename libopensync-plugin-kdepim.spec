@@ -1,5 +1,5 @@
-%define enable_kde4 1
-%{?_with_static: %{expand: %%global enable_static 1}}
+%define enable_kde4 0
+%{?_with_kde4c: %{expand: %%global enable_kde4 1}}
 
 Name: 	 	libopensync-plugin-kdepim
 Version: 	0.22
