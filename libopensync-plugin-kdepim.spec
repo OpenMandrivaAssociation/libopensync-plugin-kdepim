@@ -42,7 +42,7 @@ autoreconf -i
     --enable-libsuffix=`echo %_lib | sed '/lib//'` \
     --disable-rpath
 %else
-%configure2_5x \
+%configure_kde3 \
     --with-qt-dir=%{qt3dir} \
     --with-qt-libraries=%{qt3lib} \
     --enable-libsuffix=`echo %_lib | sed '/lib//'`
