@@ -32,8 +32,8 @@ KDE.
 %setup -q
 %if %{enable_kde4}
 %patch0 -p1 -b .kdepim4
-%endif
 autoreconf -i
+%endif
 %build
 %if %{enable_kde4}
 %configure2_5x \
