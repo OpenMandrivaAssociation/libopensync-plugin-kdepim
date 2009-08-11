@@ -1,15 +1,15 @@
-%define enable_kde4 0
+%define enable_kde4 1
 %{?_with_kde4c: %{expand: %%global enable_kde4 1}}
 
 Name: 	 	libopensync-plugin-kdepim
 Version: 	0.22
 Epoch:		1
-Release: 	%mkrel 4
+Release: 	%mkrel 5
 Summary: 	KDE plugin for OpenSync synchronization tool
 URL:		http://www.opensync.org
 Source:		http://www.opensync.org/download/releases/%{version}/%{name}-%{version}.tar.bz2
 Patch0:		libopensync-plugin-kdepim-0.22-kde4.patch
-License:	GPLv2
+License:	GPLv2+
 Group:		Office
 BuildRequires:	libopensync-devel < 0.30
 %if %{enable_kde4}
@@ -32,15 +32,16 @@ KDE.
 %setup -q
 %if %{enable_kde4}
 %patch0 -p1 -b .kdepim4
-autoreconf -i
 %endif
+
 %build
 %if %{enable_kde4}
-%configure2_5x \
-    --with-qt-dir=%{qt4dir} \
-    --with-qt-libraries=%{qt4lib} \
-    --enable-libsuffix=`echo %_lib | sed '/lib//'` \
-    --disable-rpath
+
+export CPPFLAGS="${CPPFLAGS} -I/usr/lib/qt4/include -I/usr/lib/qt4/include/Qt"
+autoreconf -i
+%configure2_5x --enable-libsuffix=`echo %_lib | sed '/lib//'`
+  
+
 %else
 %configure_kde3 \
     --with-qt-dir=%{qt3dir} \
