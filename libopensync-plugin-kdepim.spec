@@ -6,7 +6,7 @@ Version: 	0.22
 Epoch:		1
 Release: 	%mkrel 6
 Summary: 	KDE plugin for OpenSync synchronization tool
-URL:		http://www.opensync.org
+URL:		https://www.opensync.org
 Source:		http://www.opensync.org/download/releases/%{version}/%{name}-%{version}.tar.bz2
 Patch0:		libopensync-plugin-kdepim-0.22-kde4.patch
 License:	GPLv2+
