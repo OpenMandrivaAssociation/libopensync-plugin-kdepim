@@ -11,6 +11,11 @@ Source:		http://www.opensync.org/download/releases/%{version}/%{name}-%{version}
 Patch0:		libopensync-plugin-kdepim-0.22-kde4.patch
 License:	GPLv2+
 Group:		Office
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	libopensync-devel < 0.30
 %if %{enable_kde4}
 BuildRequires:	kdepimlibs4-devel
